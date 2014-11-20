@@ -1,8 +1,25 @@
 Rails.application.routes.draw do
-  devise_for :users
+  
   resources :calculators
 
-  root to: "calculators#index"
+  devise_scope :user do
+     #get '/register' => 'devise/registrations#new'
+     get    '/login'  => 'devise/sessions#new'
+     delete '/logout' => 'devise/sessions#destroy'
+  end
+  
+  devise_for :users, skip: [:sessions]
+  
+  as :user do
+     get "/login" => 'devise/sessions#new', as: :new_user_session
+     post "/login" => 'devise/sessions#create', as: :user_session
+     delete "/logout" => 'devise/sessions#destroy', as: :destroy_user_session
+  end
+  
+  get '/:id', to: 'profiles#show', as: :profile_show
+
+
+  root to: "calculators#new"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

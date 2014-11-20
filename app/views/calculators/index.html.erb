@@ -3,8 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>Email</th>
-      <th>Telephone</th>
       <th>Post code</th>
       <th>Current rent</th>
       <th>Initial cost</th>
@@ -15,11 +13,9 @@
   <tbody>
     <% @calculators.each do |calculator| %>
       <tr>
-        <td><%= calculator.email %></td>
-        <td><%= calculator.telephone %></td>
         <td><%= calculator.post_code %></td>
-        <td><%= calculator.current_rent %></td>
-        <td><%= calculator.initial_cost %></td>
+        <td>£<%= number_with_precision(calculator.current_rent, :precision => 2, :delimiter => ',') %></td>
+        <td>£<%= number_with_precision(calculator.initial_cost, :precision => 2, :delimiter => ',') %></td>
         <td><%= link_to 'Show', calculator %></td>
         <td><%= link_to 'Edit', edit_calculator_path(calculator) %></td>
         <td><%= link_to 'Destroy', calculator, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,28 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @calculator.email %>
-</p>
-
-<p>
-  <strong>Telephone:</strong>
-  <%= @calculator.telephone %>
-</p>
-
-<p>
   <strong>Post code:</strong>
   <%= @calculator.post_code %>
 </p>
 
 <p>
   <strong>Current rent:</strong>
-  <%= @calculator.current_rent %>
+  £<%= number_with_precision(@calculator.current_rent, :precision => 2, :delimiter => ',') %>
 </p>
 
 <p>
   <strong>Initial cost:</strong>
-  <%= @calculator.initial_cost %>
+  £<%= number_with_precision(@calculator.initial_cost, :precision => 2, :delimiter => ',') %>
 </p>
 
 <%= link_to 'Edit', edit_calculator_path(@calculator) %> |
