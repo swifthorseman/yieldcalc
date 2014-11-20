@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  email: MyString
-  telephone: MyString
-  post_code: MyString
-  current_rent: 9.99
-  initial_cost: 9.99
+primary_calculator:
+  email: tinkywinky@tellytubbies.com
+  telephone: 0123456789
+  post_code: SW1A 1AA
+  current_rent: 0.01
+  initial_cost: 1.00
 
 two:
   email: MyString
