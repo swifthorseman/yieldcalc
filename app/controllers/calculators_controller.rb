@@ -1,6 +1,7 @@
 class CalculatorsController < ApplicationController
   before_action :set_calculator, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
+  
   # GET /calculators
   # GET /calculators.json
   def index

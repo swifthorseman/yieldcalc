@@ -1,39 +1,73 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<legend>Edit Profile</legend>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(resource, :as => resource_name, :url => edit_user_registration_path, :html => { :method => :patch }) do |f| %>
+  <% error_messages = devise_error_messages! %>
+  <%= "#{error_messages}" unless error_messages =~ /Password/i %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div>
+    <%= f.label :full_name %><br />
+    <%= f.text_field :full_name, class: "form-control" %>
   </div>
+
+  <div>
+    <%= f.label :telephone %><br />
+    <%= f.text_field :telephone, class: "form-control" %>
+  </div>
+
+  <div><%= f.label :email, "E-mail Address" %><br />
+  <%= f.email_field :email, class: "form-control" %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <br />
+
+  <div>
+    <%= link_to "Cancel", :back, class: 'btn btn-default' %>
+    <%= submit_tag "Save", class: 'btn btn-primary' %>
+    <%# link_to "Delete Account", delete_user_path(current_user.profile_name), :data => { :confirm => "Are you sure?  This cannot be undone." }, :method => :delete, class: 'btn btn-danger pull-right' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<hr />
 
-<%= link_to "Back", :back %>
+
+
+<legend>Change Password</legend>
+<%= form_for(resource, :as => resource_name, :url => edit_user_registration_path(resource_name), :html => { :method => :patch }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div>
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= f.label :password, "New Password" %>
+    <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation, "Confirm New Password" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <br />
+
+  <div>
+    <%= link_to "Cancel", :back, class: 'btn btn-default' %>
+    <%= submit_tag "Save", class: 'btn btn-primary' %>
+    <% # link_to "Delete Account", registration_path(resource_name), :data => { :confirm => "Are you sure?  This cannot be undone." }, :method => :delete, class: 'btn btn-danger pull-right' %>
+  </div>
+
+<% end %>
+
+
+
+
+<!-- <p>Unhappy? <%= button_to "Cancel my account", edit_user_registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p> -->
+
+<% # link_to "Back", :back %>

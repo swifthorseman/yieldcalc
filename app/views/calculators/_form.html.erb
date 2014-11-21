@@ -13,17 +13,21 @@
 
   <div class="field">
     <%= f.label :post_code %><br>
-    <%= f.text_field :post_code %>
+    <%= f.text_field :post_code, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :current_rent %><br>
-    <%= f.text_field :current_rent %>
+    <%= f.text_field :current_rent, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :initial_cost %><br>
-    <%= f.text_field :initial_cost %>
+    <%= f.text_field :initial_cost, class: 'form-control' %>
   </div>
+
+  <br />
+
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to "Cancel", calculators_path, class: 'btn btn-default' %>  
+    <%= submit_tag "Save", class: 'btn btn-primary' %>
   </div>
 <% end %>
