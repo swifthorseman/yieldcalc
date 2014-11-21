@@ -14,7 +14,7 @@ class CalculatorsController < ApplicationController
 
   # GET /calculators/new
   def new
-    @calculator = Calculator.new
+    @calculator = current_user.calculators.new
   end
 
   # GET /calculators/1/edit
@@ -24,7 +24,7 @@ class CalculatorsController < ApplicationController
   # POST /calculators
   # POST /calculators.json
   def create
-    @calculator = Calculator.new(calculator_params)
+    @calculator = current_user.calculators.new(calculator_params)
 
     respond_to do |format|
       if @calculator.save

@@ -6,6 +6,7 @@ class Calculator < ActiveRecord::Base
 
   # https://gist.github.com/jasonneylon/4407872
   validates_format_of :post_code, :with =>  /\A([A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]|[A-HK-Y][0-9]([0-9]|[ABEHMNPRV-Y]))|[0-9][A-HJKS-UW])\s?[0-9][ABD-HJLNP-UW-Z]{2}|(GIR\ 0AA)|(SAN\ TA1)|(BFPO\ (C\/O\ )?[0-9]{1,4})|((ASCN|BBND|[BFS]IQQ|PCRN|STHL|TDCU|TKCA)\ 1ZZ))$\z/i, :message => "Invalid post code." 
+	validates_uniqueness_of :post_code, :scope => :user_id
 
 	validates :current_rent, presence: true
 	validates :current_rent, :numericality => { :greater_than  => 0 }

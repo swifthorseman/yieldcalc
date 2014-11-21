@@ -34,7 +34,7 @@ class CalculatorTest < ActiveSupport::TestCase
   end
 
   test "that post code is upcased when saved" do
-    post_code = "sw1a 1aa"
+    post_code = "sw1a 0aa"
     calculator = Calculator.new
     calculator.post_code = post_code
     calculator.current_rent = 0.01
@@ -113,5 +113,11 @@ class CalculatorTest < ActiveSupport::TestCase
     assert calculator.errors.empty?
   end
 
+  # TO-DOtry violating the unique index of post_code & user_id
+test "that the same combination of user_id and a calculator_id is saved once only" do
+    # Calculator.create user_id: users(:primary_test_user).id, calculator: calculators(:primary_calculator)
+    # Calculator.create user_id: users(:primary_test_user).id, calculator: calculators(:primary_calculator)
+    #assert_equal 1, calculators(:primary_calculator).calculators.where(user_id: users(:primary_test_user).id, calculator_id: calculators(:primary_calculator).id).count
+  end
 
 end

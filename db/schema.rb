@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121001106) do
+ActiveRecord::Schema.define(version: 20141121002325) do
 
   create_table "calculators", force: true do |t|
     t.string   "post_code",    limit: 10, null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141121001106) do
     t.integer  "user_id",                 null: false
   end
 
+  add_index "calculators", ["post_code", "user_id"], name: "index_calculators_on_post_code_and_user_id", unique: true
   add_index "calculators", ["user_id"], name: "index_calculators_on_user_id"
 
   create_table "users", force: true do |t|

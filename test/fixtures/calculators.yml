@@ -6,8 +6,8 @@ primary_calculator:
   initial_cost: 1.00
   user: primary_test_user
 
-two:
-  post_code: MyString
+secondary_calculator:
+  post_code: SW1A 1AA
   current_rent: 9.99
   initial_cost: 9.99
   user: secondary_test_user
