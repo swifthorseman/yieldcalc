@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Zagawa</title>
+  <title>Yieldcalc</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   
@@ -11,50 +11,54 @@
 <body>
 
 
-
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="<%= root_path %>">Yieldcalc</a>
-    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="<%= root_path %>">Yieldcalc</a>
+	    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <ul class="nav navbar-nav navbar-right">
-        
-        <% if user_signed_in? %>
+	      <ul class="nav navbar-nav navbar-right">
+	        
+	        <% if user_signed_in? %>
 
-          <li><%= link_to "Your Rental Properties", calculators_path %></li>
+	          <li><%= link_to "Your Rental Properties", calculators_path %></li>
 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.full_name %><b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to edit_user_registration_path do %>
-                  <i class="fa fa-pencil fa-fw"></i> Edit Profile
-                <% end %>
-              </li>        
-              <li class="divider"></li>
-              <li>
-                <%= link_to logout_path, method: :delete do %>
-                  <i class="fa fa-sign-out fa-fw"></i> Sign out
-                <% end %>
-              </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Sign in", login_path %></li>
-        <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
+	          <li class="dropdown">
+	            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.full_name %><b class="caret"></b></a>
+	            <ul class="dropdown-menu">
+	              <li>
+	                <%= link_to edit_user_registration_path do %>
+	                  <i class="fa fa-pencil fa-fw"></i> Edit Profile
+	                <% end %>
+	              </li>        
+	              <li class="divider"></li>
+	              <li>
+	                <%= link_to logout_path, method: :delete do %>
+	                  <i class="fa fa-sign-out fa-fw"></i> Sign out
+	                <% end %>
+	              </li>
+	            </ul>
+	          </li>
+	        <% else %>
+			  <li><%= link_to "Sign up", new_user_registration_path %></li>
+	          <li><%= link_to "Sign in", login_path %></li>
+	        <% end %>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	</div>
+	<div class="col-lg-1"></div>
   </div>
 </nav>
 
@@ -64,8 +68,10 @@
   <div class="col-lg-2"></div>
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
     <% flash.each do |type, message| %>
-      <div class="alert <%= flash_class type %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <div class="alert <%= flash_class type %> alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+		  <span aria-hidden="true">&times;</span>
+		  <span class="sr-only">Close</span></button>
         <%= message %>
       </div>
     <% end %>
@@ -73,9 +79,6 @@
     <div class="timeline">
       <%= yield %>
     </div>
-
-    <hr />
-
   </div>
   <div class="col-lg-2"></div>
 </div> <!-- container -->
