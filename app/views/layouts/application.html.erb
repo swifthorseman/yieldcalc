@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Yieldcalc</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>Zagawa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,7 +41,7 @@
                 <%= link_to edit_user_registration_path do %>
                   <i class="fa fa-pencil fa-fw"></i> Edit Profile
                 <% end %>
-              </li>
+              </li>        
               <li class="divider"></li>
               <li>
                 <%= link_to logout_path, method: :delete do %>
@@ -47,7 +51,6 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
           <li><%= link_to "Sign in", login_path %></li>
         <% end %>
       </ul>

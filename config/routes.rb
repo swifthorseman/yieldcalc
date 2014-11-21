@@ -15,11 +15,8 @@ Rails.application.routes.draw do
      post "/login" => 'devise/sessions#create', as: :user_session
      delete "/logout" => 'devise/sessions#destroy', as: :destroy_user_session
   end
-  
-  get '/:id', to: 'profiles#show', as: :profile_show
 
-
-  root to: "calculators#new"
+  root to: "calculators#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
