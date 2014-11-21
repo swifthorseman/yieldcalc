@@ -46,8 +46,9 @@
         <div class="row">
           <div class="col-xs-12 col-sm-5">
             <div class="business-meta-mini">
-                Current rent: £<%= number_with_precision(calculator.current_rent, :precision => 2, :delimiter => ',') %><br />
-                Initial cost: £<%= number_with_precision(calculator.initial_cost, :precision => 2, :delimiter => ',') %>
+                Current annual rent: £<%= number_with_precision(calculator.current_rent, :precision => 2, :delimiter => ',') %><br />
+                Initial cost: £<%= number_with_precision(calculator.initial_cost, :precision => 2, :delimiter => ',') %><br />
+                Yearly yield: <%= number_with_precision(CalculatorsHelper.yearly_yield(calculator.current_rent, calculator.initial_cost), :precision => 2, :delimiter => ',') %>%
             </div>
           </div>
           <div class="col-xs-12 col-sm-7">
