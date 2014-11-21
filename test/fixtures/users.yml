@@ -9,3 +9,10 @@ primary_test_user:
     telephone: "0123456789"
     email: "primary_tester@example.com"
     encrypted_password: "$2a$10$Fh/Hm8RxDsuPTeBUr6864.GARlcmt7zF2WspaXGr3BIv2C27N.osq"
+
+
+secondary_test_user:
+    full_name: "Secondary Tester"
+    telephone: "0123456789"
+    email: "secondary_tester@example.com"
+    encrypted_password: "$2a$10$Fh/Hm8RxDsuPTeBUr6864.GARlcmt7zF2WspaXGr3BIv2C27N.osq"

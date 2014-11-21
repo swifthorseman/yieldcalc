@@ -36,11 +36,10 @@ class CalculatorTest < ActiveSupport::TestCase
   test "that post code is upcased when saved" do
     post_code = "sw1a 1aa"
     calculator = Calculator.new
-    calculator.email = "tinkywinky@tellytubbies.com"
-	calculator.telephone = "0123456789"
     calculator.post_code = post_code
     calculator.current_rent = 0.01
     calculator.initial_cost = 1.00
+    calculator.user_id = users(:primary_test_user).id
     assert calculator.valid?
     assert calculator.save
     calculator.reload
