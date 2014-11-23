@@ -1,13 +1,13 @@
 == Simy
 
-=Introduction
+===Introduction
 
 Simy is a simple yearly yield calculator for rental properties.  It takes the annual rent and initial costs of buying the property as input and returns the yearly yield by using the following equation.
 
-yearly yield = annual rent / initial costs
+====yearly yield = annual rent / initial costs
 
 
-=Technology
+===Technology
 
 Simy is a Rails app (Rails 4.1.6) and uses PostgreSQL database (in production).
 
@@ -20,12 +20,12 @@ Notable gems and components that it uses are:
  * Font Awesome for scalable vector icons
 
 
-=Heroku
+===Heroku
 
 Simy runs on the Heroku platform. A SendGrid Heroku add-on is used for sending e-mails.
 
 
-=TO-DO
+===TO-DO
 
  * Carry out simple form validations in JavaScript; fewer trips to the 
    server the better – it saves the user the bandwidth; keeps the 
@@ -43,6 +43,7 @@ Simy runs on the Heroku platform. A SendGrid Heroku add-on is used for sending e
  * Provide the ability to view the price of properties around the post code 
    entered and provide a downloadable report.
 
- * Provide guess access that allows the user to calculate the simple yield.    This will be a JavaScript front-end development. Offer more complex 
+ * Provide guess access that allows the user to calculate the simple yield.    
+   This will be a JavaScript front-end development. Offer more complex 
    calculations for the registered users.
 
