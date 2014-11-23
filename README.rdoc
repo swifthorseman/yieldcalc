@@ -1,28 +1,47 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=Introduction
 
-Things you may want to cover:
+Simy is a simple yearly yield calculator for rental properties.
+It takes the annual rent and initial costs of buying the property
+as input and returns the yearly yield by using the following equation.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+yearly yield = annual rent / initial costs
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+=Technology
+
+Simy is a Rails app (Rails 4.1.6) and uses PostgreSQL database (in production).
+
+Notable gems and components that it uses are:
+
+ * Twitter Bootstrap (version 3.3.1) for the front-end
+ * Devise for user authentication
+ * Font Awesome for scalable vector icons
+
+
+=Heroku
+
+Simy runs on the Heroku platform. A SendGrid Heroku add-on is used for sending e-mails.
+
+
+=TO-DO
+
+ * Carry out simple form validations in JavaScript; fewer trips to the server the better – it 
+   saves the user the bandwidth; keeps the unnecessary and trivial processing in the browser 
+   and keeps the server costs down.
+
+ * Test cases in the controllers. This was dropped out due to incompatibility issues with the
+   shoulda gem. Needs further investigation.
+
+ * Auto-complete the address based on the post code entered.
+
+ * Allow multiple calculations on the same post code (e.g. for two rental properties having the
+   same post code.)
+
+ * Provide the ability to view the price of properties around the post code entered and provide
+   a downloadable report.
+
+ * Provide guess access that allows the user to calculate the simple yield. This will be a JavaScript
+   front-end development. Offer more complex calculations for the registered users.
+
