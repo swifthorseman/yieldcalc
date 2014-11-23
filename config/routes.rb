@@ -1,22 +1,33 @@
 Rails.application.routes.draw do
   
-  resources :calculators
+  resources :calculators, except: [:show]
 
   devise_scope :user do
-     #get '/register' => 'devise/registrations#new'
+     get  '/register' => 'devise/registrations#new'
      get    '/login'  => 'devise/sessions#new'
      delete '/logout' => 'devise/sessions#destroy'
   end
   
-  devise_for :users, skip: [:sessions]
+  devise_for :users, skip: [:sessions, :registrations]
   
   as :user do
-     get "/login" => 'devise/sessions#new', as: :new_user_session
-     post "/login" => 'devise/sessions#create', as: :user_session
+     get    "/login"  => 'devise/sessions#new',     as: :new_user_session
+     post   "/login"  => 'devise/sessions#create',  as: :user_session
      delete "/logout" => 'devise/sessions#destroy', as: :destroy_user_session
+
+     # overriding registrations
+     get   "/users/cancel"  => 'devise/registrations#cancel', as: :cancel_user_registration
+     post  "/users"         => 'devise/registrations#create', as: :user_registration
+     get   "/users/sign_up" => 'devise/registrations#new',    as: :new_user_registration
+     get   "/users/edit"    => 'registrations#edit',          as: :edit_user_registration
+     patch "/users/edit"    => 'registrations#update',        as: ""
   end
 
-  root to: "calculators#index"
+  authenticated :user do
+    root :to => 'calculators#index', :as => :authenticated_root
+  end
+  root to: redirect('/register')
+  #root to: 'calculators#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

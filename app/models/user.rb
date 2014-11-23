@@ -14,13 +14,13 @@ class User < ActiveRecord::Base
 	                    with: /\A[a-zA-Z]+[a-zA-Z\-\'\s]+\z/, 
 	                    message: 'must start with an alphabet, may contain only alphabets, apostrophes, hyphens and spaces.' }
 
-  validates_length_of :full_name, within: 3..255,
-                      too_long: 'must be between 3 and 255 characters inclusive.',
-                      too_short: 'must be between 3 and 255 characters inclusive.'
+  validates_length_of :full_name, within: 2..255,
+                      too_long: 'must be between 2 and 255 characters inclusive.',
+                      too_short: 'must be between 2 and 255 characters inclusive.'
 
   validates :telephone, presence: true,
 	                    format: { 
-	                    with: /\A[0][1-9][0-9]+\z/, 
+	                    with: /\A[0][1-9][0-9]+\z/,
 	                    message: 'must start with a single zero and may contain only numbers.' }
 
   validates_length_of :telephone, within: 10..15,

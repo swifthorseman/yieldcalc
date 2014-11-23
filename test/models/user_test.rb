@@ -24,7 +24,7 @@ class UserTest < ActiveSupport::TestCase
     user.full_name = 'a'
     assert !user.save
     assert !user.errors[:full_name].empty?
-    assert user.errors[:full_name].include?("must be between 3 and 255 characters inclusive.")
+    assert user.errors[:full_name].include?("must be between 2 and 255 characters inclusive.")
   end
 
   test "that full_name is at most of the maximum characters allowed" do
@@ -32,7 +32,7 @@ class UserTest < ActiveSupport::TestCase
     user.full_name = 'a' * 256
     assert !user.save
     assert !user.errors[:full_name].empty?
-    assert user.errors[:full_name].include?("must be between 3 and 255 characters inclusive.")
+    assert user.errors[:full_name].include?("must be between 2 and 255 characters inclusive.")
   end
 
   test "that full_name is titleised when saved" do

@@ -14,7 +14,7 @@ class CalculatorTest < ActiveSupport::TestCase
     calculator.post_code = 'Invalid post code'
     assert !calculator.save
     assert !calculator.errors[:post_code].empty?
-    assert calculator.errors[:post_code].include?("Invalid post code.")
+    assert calculator.errors[:post_code].include?("is invalid")
   end
 
   test "that post code is at least of the minimum characters allowed" do
@@ -22,7 +22,7 @@ class CalculatorTest < ActiveSupport::TestCase
     calculator.post_code = 'SW1X 8'
     assert !calculator.save
     assert !calculator.errors[:post_code].empty?
-    assert calculator.errors[:post_code].include?("Invalid post code.")
+    assert calculator.errors[:post_code].include?("is invalid")
   end
 
   test "that post code is at most of the maximum characters allowed" do
@@ -30,7 +30,7 @@ class CalculatorTest < ActiveSupport::TestCase
     calculator.post_code = 'SW1X 18ER'
     assert !calculator.save
     assert !calculator.errors[:post_code].empty?
-    assert calculator.errors[:post_code].include?("Invalid post code.")
+    assert calculator.errors[:post_code].include?("is invalid")
   end
 
   test "that post code is upcased when saved" do

@@ -1,13 +1,14 @@
-<h2>Sign up</h2>
+<legend>Welcome to Simy!</legend>
 
-<hr />
+<p>Simy lets you calculate yearly yield on your rental properties. It also saves your calculations in the cloud so you can retrieve them anytime anywhere.</p>
 
-<p>By signing up, you will be able to save your yield calculations and retrieve them any time.</p>
+<p>Let us take some details to get started.</p>
 
+<br />
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
+  <%= devise_error_messages! %>
 
   <div class="field">
     <%= f.label :full_name %><br />
@@ -41,6 +42,7 @@
 
   <div class="actions">
     <%= f.submit "Sign up", class: 'btn btn-primary' %>
+    <%= link_to "Already have an account? Sign in.", login_path %>
   </div>
 <% end %>
 

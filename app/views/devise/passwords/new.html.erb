@@ -1,13 +1,13 @@
-<h2>Reset Password</h2>
-
-<hr />
+<legend>Reset Password</legend>
 
 <p>We can help you reset your password using the email address linked to your account.</p>
 
 
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <div id="error_explanation">
+	<%= devise_error_messages! %>
+  </div>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Enter your e-mail address' %>
@@ -15,5 +15,5 @@
 
   <br />
 
-  <div><%= f.submit "Reset", class: 'btn btn-primary' %></div>
+  <div><%= f.submit "Send instructions", class: 'btn btn-primary' %></div>
 <% end %>

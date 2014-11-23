@@ -1,7 +1,11 @@
 <%= form_for(@calculator) do |f| %>
+  <p>Enter the post code of the property, annual rent and initial costs. We will do the number crunching behind the scenes.</p>
+
+  <br />
+
   <% if @calculator.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@calculator.errors.count, "error") %> prohibited this calculator from being saved:</h2>
+    <div id="error_explanation" class="alert-danger alert" role="alert">
+      <h5><%= pluralize(@calculator.errors.count, "error") %> occurred:</h5>
 
       <ul>
       <% @calculator.errors.full_messages.each do |message| %>
@@ -9,25 +13,25 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %>  
 
   <div class="field">
-    <%= f.label :post_code %><br>
-    <%= f.text_field :post_code, class: 'form-control' %>
+    <%= f.label :post_code, "Post Code" %><br>
+    <%= f.text_field :post_code, class: 'form-control', placeholder: "SW1A 1AA" %>
   </div>
   <div class="field">
-    <%= f.label :current_rent %><br>
-    <%= f.text_field :current_rent, class: 'form-control' %>
+    <%= f.label :current_rent, "Annual Rent (£)" %><br>
+    <%= f.text_field :current_rent, class: 'form-control', placeholder: "10000.00" %>
   </div>
   <div class="field">
-    <%= f.label :initial_cost %><br>
-    <%= f.text_field :initial_cost, class: 'form-control' %>
+    <%= f.label :initial_cost, "Initial Costs (£)" %><br>
+    <%= f.text_field :initial_cost, class: 'form-control', placeholder: "400000.00" %>
   </div>
 
   <br />
 
   <div class="actions">
     <%= link_to "Cancel", calculators_path, class: 'btn btn-default' %>  
-    <%= submit_tag "Save", class: 'btn btn-primary' %>
+    <%= submit_tag "Calculate", class: 'btn btn-primary' %>
   </div>
 <% end %>

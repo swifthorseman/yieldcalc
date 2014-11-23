@@ -5,7 +5,7 @@ class CalculatorsController < ApplicationController
   # GET /calculators
   # GET /calculators.json
   def index
-    @calculators = Calculator.all
+    @calculators = current_user.calculators.order('created_at desc')
   end
 
   # GET /calculators/1
@@ -29,7 +29,7 @@ class CalculatorsController < ApplicationController
 
     respond_to do |format|
       if @calculator.save
-        format.html { redirect_to @calculator, notice: 'Calculator was successfully created.' }
+        format.html { redirect_to calculators_url, notice: 'The yield was successfully calculated.' }
         format.json { render :show, status: :created, location: @calculator }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class CalculatorsController < ApplicationController
   def update
     respond_to do |format|
       if @calculator.update(calculator_params)
-        format.html { redirect_to @calculator, notice: 'Calculator was successfully updated.' }
+        format.html { redirect_to calculators_url, notice: 'The calculation was successfully updated.' }
         format.json { render :show, status: :ok, location: @calculator }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class CalculatorsController < ApplicationController
   def destroy
     @calculator.destroy
     respond_to do |format|
-      format.html { redirect_to calculators_url, notice: 'Calculator was successfully destroyed.' }
+      format.html { redirect_to calculators_url, notice: 'The calculation was successfully deleted.' }
       format.json { head :no_content }
     end
   end
